@@ -1,0 +1,24 @@
+
+#ifndef ENCLAVE_H_
+#define ENCLAVE_H_
+
+/***************************************************
+ * Enclave return codes
+ ***************************************************/
+#define RET_SUCCESS 0
+#define ERROR_INVALID_ARGUMENTS 1
+#define ERROR_ORAM_RETURN_ERROR 2
+#define ERROR_USER_AUTH_FAILED 3
+#define ERROR_SERVICE_RUNNING 4
+#define ERROR_SERVICE_NOT_RUNNING 5
+#define ERROR_OCALL_FAILED 6
+#define ERROR_BUCKET_SIZE_INCONSISTENT 7
+#define ERROR_ORAM_INDEX_OOR 8
+#define ERROR_ORAM_ENCRYPTION_FAILED 9
+#define ERROR_SERVICE_DECRYPTION_FAILED 10
+#define ERROR_VARIABLE_SIZE_INCONSISTENT 11
+
+#define NAME_MESSAGES_ORAM "MESSAGES_ORAM"
+#define NAME_RECIPIENTS_ORAM "RECIPIENTS_ORAM"
+
+#endif

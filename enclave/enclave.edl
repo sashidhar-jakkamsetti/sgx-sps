@@ -1,0 +1,77 @@
+
+enclave {
+
+    from "sgx_tsgxssl.edl" import *;
+    from "sgx_pthread.edl" import *;
+
+    // define ECALLs
+    trusted {
+
+        public int ecall_init_service(
+            int n_messages,
+            int n_recip,
+            int bucket_size
+        );
+
+        // TODO: This call should ideally output an attestation report
+        // to ensure authenticity of the enclave and verify the keys 
+        public int ecall_get_keys(
+            [out, size=out_size] void* out_data, size_t out_size
+        );
+
+        public int ecall_setup(
+            [in, size=in_size] void* in_data, size_t in_size,
+            [out, size=out_size] void* out_data, size_t out_size,
+            [out, size=sig_size] void* sig_data, size_t sig_size
+        );
+
+        public int ecall_send(
+            [in, size=in_size] void* in_data, size_t in_size,
+            [out, size=out_size] void* out_data, size_t out_size,
+            [out, size=sig_size] void* sig_data, size_t sig_size
+        );
+
+        public int ecall_receive(
+            [in, size=in_size] void* in_data, size_t in_size,
+            [out, size=out_size] void* out_data, size_t out_size,
+            [out, size=sig_size] void* sig_data, size_t sig_size
+        );
+
+        public int ecall_kill_service();
+    };
+
+
+    // define OCALLs
+    untrusted {
+
+        void ocall_debug_print(
+            [in, string] const char* str
+        );
+
+        int ocall_oram_storage_init(
+            [in, string] const char* oram_name, 
+            int n_buckets,
+            int bucket_size
+        );
+
+        int ocall_oram_read_buckets(
+            [in, string] const char* oram_name, 
+            [in, size=idx_size] void* idx, size_t idx_size,
+            [out, size=read_bucket_size] void* read_bucket, size_t read_bucket_size
+        );
+
+        int ocall_oram_write_buckets(
+            [in, string] const char* oram_name, 
+            [in, size=idx_size] void* idx, size_t idx_size,
+            [in, size=write_bucket_size] void* write_bucket, size_t write_bucket_size
+        );
+
+        int ocall_oram_kill(
+            [in, string] const char* oram_name
+        );
+
+        int ocall_oram_exists(
+            [in, string] const char* oram_name
+        );
+    };
+};
