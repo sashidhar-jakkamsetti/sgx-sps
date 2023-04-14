@@ -355,9 +355,12 @@ int experiment(sgx_enclave_id_t eid, const char* filename) {
     remove(filename);
     ofstream outfile(filename);
 
-    // int n_recip[] = {100, 1000};
-    int n_recip[] = {100, 1000, 10000, 100000};
-    int n_messages_mul[] = {10, 30, 100};
+    /* 
+        Change the below values to add test iterations.
+        Currently, for every n_messages and n_recip, the code will start a new test run.
+    */
+    int n_messages[] = {100000, 300000, 1000000, 10000000};
+    int n_recip[] = {1000, 3300, 10000, 33000, 100000};
     int bucket_size = ORAM_BUCKET_SIZE;
     int recip_loc_domain = RECIPIENT_DATA_BITS;
     int send_tot = 300;
@@ -374,10 +377,10 @@ int experiment(sgx_enclave_id_t eid, const char* filename) {
     
     outfile << "*****************************************************************" << endl << endl;
     outfile << "for each number of recipients and messages multiplier" << endl;
-    for (int i = 0 ; i < sizeof(n_recip)/sizeof(int); i++) {
-        for (int j = 0; j < sizeof(n_messages_mul)/sizeof(int); j++) {
-            nRecip = n_recip[i];
-            nMesg = n_messages_mul[j]*nRecip;
+    for (int i = 0 ; i < sizeof(n_messages)/sizeof(int); i++) {
+        for (int j = 0; j < sizeof(n_recip)/sizeof(int); j++) {
+            nMesg = n_messages[i];
+            nRecip = n_recip[j];
             info_print("Test initiated\n");
             outfile << "--------------------------------------------------------" << endl;
             outfile << "Test parameters: N=" << nMesg << ", M=" << nRecip << endl;
@@ -392,41 +395,28 @@ int experiment(sgx_enclave_id_t eid, const char* filename) {
         }
     }
 
-    outfile << "*****************************************************************" << endl << endl;
-    outfile << "for a particular number of recipients and messages, measure varying ORAM bucket size" << endl;
-    nRecip = 10000;
-    nMesg = 10*nRecip;
-    int bucket_size_array[] = {2, 4, 8, 16, 32, 64};
-    for (int i = 0; i < sizeof(bucket_size_array)/sizeof(int); i++) {
-        info_print("Test initiated\n");
-        outfile << "--------------------------------------------------------" << endl;
-        outfile << "Test parameters: N=" << nMesg << ", M=" << nRecip 
-                << ", BucketSize=" << bucket_size_array[i] << endl;
-        ret = test(eid, nMesg, nRecip, bucket_size_array[i], recip_loc_domain,
-                send_tot, receive_tot_array, receive_tot_array_len, outfile);
-        if (ret != RET_SUCCESS) {
-            error_print("Test FAILED!!\n"); 
-        }
-        else{
-            info_print("Test successful!!\n");
-        }
-    }
-
-    outfile << "*****************************************************************" << endl << endl;
-    outfile << "for a particular number of recipients and messages, measure multiple receive" << endl;
-    nRecip = 1000000;
-    nMesg = 10*nRecip;
-    info_print("Test initiated\n");
-    outfile << "--------------------------------------------------------" << endl;
-    outfile << "Test parameters: N=" << nMesg << ", M=" << nRecip << endl;
-    ret = test(eid, nMesg, nRecip, bucket_size, recip_loc_domain,
-            send_tot, receive_tot_array, receive_tot_array_len, outfile);
-    if (ret != RET_SUCCESS) {
-        error_print("Test FAILED!!\n"); 
-    }
-    else{
-        info_print("Test successful!!\n");
-    }
+    /* 
+        Uncomment this part to also test with varying bucket size. 
+    */
+    // outfile << "*****************************************************************" << endl << endl;
+    // outfile << "for a particular number of recipients and messages, measure varying ORAM bucket size" << endl;
+    // nRecip = 10000;
+    // nMesg = 10*nRecip;
+    // int bucket_size_array[] = {2, 4, 8, 16, 32, 64};
+    // for (int i = 0; i < sizeof(bucket_size_array)/sizeof(int); i++) {
+    //     info_print("Test initiated\n");
+    //     outfile << "--------------------------------------------------------" << endl;
+    //     outfile << "Test parameters: N=" << nMesg << ", M=" << nRecip 
+    //             << ", BucketSize=" << bucket_size_array[i] << endl;
+    //     ret = test(eid, nMesg, nRecip, bucket_size_array[i], recip_loc_domain,
+    //             send_tot, receive_tot_array, receive_tot_array_len, outfile);
+    //     if (ret != RET_SUCCESS) {
+    //         error_print("Test FAILED!!\n"); 
+    //     }
+    //     else{
+    //         info_print("Test successful!!\n");
+    //     }
+    // }
 
     outfile.close();
     return 0;
