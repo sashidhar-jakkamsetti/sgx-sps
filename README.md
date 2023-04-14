@@ -1,7 +1,7 @@
 # Efficient Private Signaling
 
 This repository is intended to be used as an artifact for the Efficient Private Signaling paper submitted to IEEE S&P 2024. 
-If the paper gets accepted, we expect to open-source this repository for public availability.
+We expect to open-source this repository for public availability soon.
 
 ## Directory Structure
 
