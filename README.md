@@ -1,7 +1,6 @@
-# Efficient Private Signaling
+# Scalable Private Signaling
 
-This repository is intended to be used as an artifact for the Efficient Private Signaling paper submitted to IEEE S&P 2024. 
-We expect to open-source this repository for public availability soon.
+This repository contains the proof-of-concept implementation of Scalable Private Signalling. It is an improved version of [Private Signalling](https://www.usenix.org/system/files/sec22-madathil.pdf) that builds on private database based on PathORAM and Trusted Execution Environment (TEE). Experimental results show that our server implementation takes < 6 milliseconds to process a sent signal, and < 200 milliseconds to process a retrieval (of 100 signals) request from a recipient. 
 
 ## Directory Structure
 
