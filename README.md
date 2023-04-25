@@ -58,7 +58,7 @@ $ ./ps
 
 To run it in hardware mode on SGX-enabled CPUs use the flag `SGX_MODE=HW`:
 ```
-$ make SGX_MODE=SIM
+$ make SGX_MODE=HW
 $ ./ps
 ```
 
