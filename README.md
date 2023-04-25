@@ -1,6 +1,6 @@
 # Scalable Private Signaling
 
-This repository contains the proof-of-concept implementation of Scalable Private Signalling. It is an improved version of [Private Signalling](https://www.usenix.org/system/files/sec22-madathil.pdf) that builds on private database based on PathORAM and Trusted Execution Environment (TEE). Experimental results show that our server implementation takes < 6 milliseconds to process a sent signal, and < 200 milliseconds to process a retrieval (of 100 signals) request from a recipient. 
+This repository contains the proof-of-concept implementation of [Scalable Private Signalling](https://eprint.iacr.org/2023/572.pdf). It is an improved version of [Private Signalling](https://www.usenix.org/system/files/sec22-madathil.pdf) that builds on private database based on PathORAM and Trusted Execution Environment (TEE). Experimental results show that our server implementation takes < 6 milliseconds to process a sent signal, and < 200 milliseconds to process a retrieval (of 100 signals) request from a recipient. 
 
 ## Directory Structure
 
