@@ -1,6 +1,6 @@
 # Scalable Private Signaling
 
-This repository contains the proof-of-concept implementation of Scalable Private Signaling using PathORAM and Trusted Execution Environments.
+This repository contains the proof-of-concept implementation of Scalable Private Signaling (SPS) using PathORAM and Trusted Execution Environment (TEE).
 It contains two prototypes: (1) `ZeroTrace-sps` - SPS prototype that is side-channel resistant, built using [ZeroTrace library](https://github.com/sshsshy/ZeroTrace/tree/master), and (2) `sgx-ps` - SPS prototype that is not side-channel resistant but faster and optimized.
 
 ## Environment and Language
