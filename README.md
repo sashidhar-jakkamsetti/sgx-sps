@@ -1,9 +1,7 @@
 # Scalable Private Signaling
 
-This repository is intended to be used as an artifact for the Scalable Private Signaling (SPS) paper submitted to USENIX Security 2024. 
-If the paper gets accepted, we expect to open-source this repository for public availability.
-
-This repository contains two prototypes: (1) `ZeroTrace-sps` - SPS prototype that is side-channel resistant, built using [ZeroTrace library](https://github.com/sshsshy/ZeroTrace/tree/master), and (2) `sgx-ps` - SPS prototype that is not side-channel resistant but faster and optimized.
+This repository contains the proof-of-concept implementation of Scalable Private Signaling using PathORAM and Trusted Execution Environments.
+It contains two prototypes: (1) `ZeroTrace-sps` - SPS prototype that is side-channel resistant, built using [ZeroTrace library](https://github.com/sshsshy/ZeroTrace/tree/master), and (2) `sgx-ps` - SPS prototype that is not side-channel resistant but faster and optimized.
 
 ## Environment and Language
 
