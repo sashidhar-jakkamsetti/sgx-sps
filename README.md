@@ -17,7 +17,7 @@ Here we list out the environment (OS, processor) and programming language used a
 
 ## Dependencies
 
-Before installing **sgx-ps**, ensure you have the following already installed on your Ubuntu machine:
+Before installing **sgx-sps**, ensure you have the following already installed on your Ubuntu machine:
 
   - Intel SGX Linux [Drivers](https://github.com/intel/linux-sgx-driver)
   - Intel SGX Linux [SDK](https://github.com/intel/linux-sgx)
