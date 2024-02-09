@@ -11,9 +11,9 @@ This repo is built atop ZeroTrace ([paper](https://eprint.iacr.org/2017/549.pdf)
     ZeroTrace-sps
     ├── psapp               (Prototype entry; contains recipient, test, and experimentation code.)
     ├── ZT_Enclave          (Enclave codebase including SPS functionality and ZT ORAM implementation.)
-    │   └── ZT_Enclave.cpp  (Core logic for SPS enclave is implemented in this file.)
+    │   └── ZT_Enclave.cpp  (Core logic for SPS enclave is implemented in this file starting from line 770.)
     └── ZT_Untrusted        (Untrusted driver interface for communicating with ZT_Enclave.)
-        └── App.cpp         (Core logic for SPS interface for SPS enclave.)
+        └── App.cpp         (Core logic for SPS interface for SPS enclave is implemented in this file starting from line 966.)
 
 ## Environment and Language
 
